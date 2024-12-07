@@ -1,0 +1,14 @@
+FROM ubuntu:20.04
+ 
+# Create a custom user with UID 1234 and GID 1234
+RUN groupadd -g 1234 mygroup && \
+    useradd -m -u 1234 -g mygroup myuser
+ 
+# Switch to the custom user
+USER myuser
+ 
+# Set the workdir
+WORKDIR /home/myuser
+ 
+# Print the UID and GID
+CMD sh -c "echo 'Inside Container:' && echo 'User: $(whoami) UID: $(id -u) GID: $(id -g)'"

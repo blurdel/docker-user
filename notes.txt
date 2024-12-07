@@ -1,0 +1,6 @@
+
+docker build -t default-user-image -f Dockerfile-root .
+docker build -t custom-user-image -f Dockerfile-user .
+
+docker run --rm default-user-image
+docker run --rm custom-user-image
